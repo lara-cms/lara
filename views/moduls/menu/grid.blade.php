@@ -98,8 +98,8 @@
 
 $.when(
     //juk.loadJsCss('/js/jsuikit/ext/juktable.js'),
-    juk.loadJsCss('/js/lara/table.js'),
-    juk.loadJsCss('/js/jsuikit/juk-modal.js')
+    juk.loadJsCss('/bower_components/juk/lara/table.js'),
+    juk.loadJsCss('/bower_components/juk/juk-modal.js')
 ).done(function () {
     
     lara.table({

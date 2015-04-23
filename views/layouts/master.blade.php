@@ -16,7 +16,7 @@
         <script src="/bower_components/jquery/dist/jquery.min.js"></script>
         <script src="/bower_components/yepnope/dist/yepnope-2.0.0.min.js"></script>
         <script src="/bower_components/uikit/js/uikit.min.js"></script> 
-        <script src="/js/jsuikit/juk.js"></script>        
+        <script src="/bower_components/juk/juk.js"></script>        
 
         
         <nav class="uk-navbar">

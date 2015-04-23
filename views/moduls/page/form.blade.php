@@ -39,7 +39,7 @@
                     </td>
                     <td>
                         <select name="template" value="{{$model->template}}">
-                            @foreach (Config('digital-code.master.template') as $key=>$val)
+                            @foreach (Config('lara-cms.master.template') as $key=>$val)
                                 @if ($key == $model->template)
                                     <option selected value="{{$key}}">{{$val}}</option>
                                 @else
@@ -77,10 +77,10 @@
         
         <div id="editor" style="height: 500px;font-size: 14px;"></div>
         <script>
-            yepnope.injectJs('/js/ace/ace.js', function () {
+            yepnope.injectJs('/bower_components/ace-builds/src-min/ace.js', function () {
 
                 var e = ace.edit('editor');
-                e.setTheme("ace/theme/cloud9_day");
+                e.setTheme("ace/theme/chrome");
                 e.setValue($('#content').val());
                 e.getSession().setMode("ace/mode/html");
 
@@ -96,8 +96,8 @@
 <script>
     yepnope.injectJs('/bower_components/uikit/js/core/switcher.js');
     
-    yepnope.injectJs('/js/jsuikit/juk-form.js',function(){
-        yepnope.injectJs('/js/jsuikit/juk-loader.js',function(){
+    yepnope.injectJs('/bower_components/juk/juk-form.js',function(){
+        yepnope.injectJs('/bower_components/juk/juk-loader.js',function(){
             $('form').jukForm({
                 start_load:false,
                 submit_url: '{{$url_controller}}/update?_token={{csrf_token()}}',

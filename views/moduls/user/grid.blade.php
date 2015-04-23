@@ -1,8 +1,8 @@
 <script>
-yepnope.injectJs('/js/jsuikit/juk-modal.js');
+yepnope.injectJs('/bower_components/juk/juk-modal.js');
 
-yepnope.injectJs('/js/jsuikit/juk-table.js',function(){
-    yepnope.injectJs('/js/jsuikit/juk-loader.js',function(){
+yepnope.injectJs('/bower_components/juk/juk-table.js',function(){
+    yepnope.injectJs('/bower_components/juk/juk-loader.js',function(){
         table_reload ();
     });
 });
@@ -19,11 +19,6 @@ function table_reload () {
 }
 
 
-yepnope.injectJs('/js/spin.js',function(){
-    yepnope.injectJs('/js/jsuikit/juk-loader.js',function(){
-
-    });
-});
 </script>
 
 <div class="uk-panel uk-panel-box uk-panel-box-secondary">

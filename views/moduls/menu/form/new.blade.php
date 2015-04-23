@@ -28,8 +28,8 @@
 </form>
 
 <script>
-    yepnope.injectJs('/js/jsuikit/juk-form.js',function(){
-        yepnope.injectJs('/js/jsuikit/juk-loader.js',function(){
+    yepnope.injectJs('/bower_components/juk/juk-form.js',function(){
+        yepnope.injectJs('/bower_components/juk/juk-loader.js',function(){
             $('form').jukForm({
                 start_load: false,
                 submit_url: '{{$url_controller}}/update?_token={{csrf_token()}}',
