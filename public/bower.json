@@ -1,0 +1,27 @@
+{
+  "name": "lara-cms",
+  "version": "0.0.0",
+  "authors": [
+    "Suroviy <Syroviy@bk.ru>"
+  ],
+  "description": "assets lib for lara-cms",
+  "keywords": [
+    "laravel"
+  ],
+  "license": "MIT",
+  "homepage": "QwerBit.ru",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "juk": "git://github.com/suroviy/juk",
+    "jquery": "~2.1.3",
+    "ace-builds": "git://github.com/ajaxorg/ace-builds#~1.1.9",
+    "uikit": "~2.19.0",
+    "yepnope": "~2.0.0"
+  }
+}
