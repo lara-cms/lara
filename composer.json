@@ -1,0 +1,21 @@
+{
+    "name": "lara-cms/lara",
+    "description": "PHP CMS model for Laravel",
+    "keywords": ["laravel", "cms", "controllers"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alex. Suroviy",
+            "email": "suroviy@bk.ru"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "LaraCms\\Lara\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"  
+}
