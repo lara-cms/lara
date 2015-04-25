@@ -6,14 +6,12 @@ use Baum\Node;
 
 use View,Response,Input,Validator;
 
-Use laraCms\Lara\BaseController;
+Use LaraCms\Lara\BaseController;
 use App\Http\Controllers\Controller;
 
 class MenuController extends Controller {
 
     use BaseController;      
-    
-    protected $url_controller = '/lara/menu';
     
     protected $name_controller = 'menu';
     
@@ -22,8 +20,14 @@ class MenuController extends Controller {
         return new Menu();
     }
     
+    public function urlController()
+    {
+        return '/'.Config('lara-cms.lara.master.prefix').'/'.$this->name_controller;
+    }
+    
     public function updateModel($model)
     {
+        
         
         $get = Input::all();
         if (isset($get['title']))
@@ -57,7 +61,7 @@ class MenuController extends Controller {
     public function getEdit($var)
     {
 
-        $url_controller = $this->url_controller;
+        $url_controller = $this->urlController();
         $model = $this->model()->find($var);
         $id = $model->id;
         return view('lara::moduls.'.$this->name_controller.'.form',  compact('url_controller','model','id'));
@@ -87,10 +91,10 @@ class MenuController extends Controller {
     {
         return $this->getParent(0);
     }
-    
+
     public function getParent ($parent_id = 0)
     {
-        $url_controller = $this->url_controller;
+        $url_controller = $this->urlController();
         $inner = view('lara::moduls.'.$this->name_controller.'.grid',  compact('url_controller','parent_id'));
         return $this->view(compact(['inner']));
     }
@@ -110,16 +114,12 @@ class MenuController extends Controller {
             {
                 $rows = $parent->children()->get();
             }
-            
         }
         else
         {
             $rows = $this->model()->roots()->get();
         }
         
-        
-        
- 
         $r = [];
         
         foreach($rows as $val)
@@ -161,13 +161,14 @@ class MenuController extends Controller {
 
             }
         }
-        /*
-        $model = CatalogCategory::all();
-        $rows = $model->toArray();
-        return response()->json(['rows' => $rows, 'total' => sizeof($rows)]);
-        */
+      
+        //$model = CatalogCategory::all();
+        //$rows = $model->toArray();
+        //return response()->json(['rows' => $rows, 'total' => sizeof($rows)]);
+        
         
         return response()->json([]);
          
     }
+
 }
