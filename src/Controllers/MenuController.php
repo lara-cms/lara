@@ -20,11 +20,6 @@ class MenuController extends Controller {
         return new Menu();
     }
     
-    public function urlController()
-    {
-        return '/'.Config('lara-cms.lara.master.prefix').'/'.$this->name_controller;
-    }
-    
     public function updateModel($model)
     {
         
@@ -85,18 +80,6 @@ class MenuController extends Controller {
             $model->save();
             return response()->json($model->toArray());
         }
-    }
-
-    public function getIndex ()
-    {
-        return $this->getParent(0);
-    }
-
-    public function getParent ($parent_id = 0)
-    {
-        $url_controller = $this->urlController();
-        $inner = view('lara::moduls.'.$this->name_controller.'.grid',  compact('url_controller','parent_id'));
-        return $this->view(compact(['inner']));
     }
     
     public function postGetlist ($parent_id = null)

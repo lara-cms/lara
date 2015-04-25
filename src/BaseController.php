@@ -19,6 +19,11 @@ trait BaseController {
         return new User();
     }
     
+    public function urlController()
+    {
+        return '/'.Config('lara-cms.lara.master.prefix').'/'.$this->name_controller;
+    }
+    
     protected function updateModel($model)
     {
         $model->name = Input::get( 'name' );
@@ -48,7 +53,7 @@ trait BaseController {
             )
         );
     }
-
+/*
     protected function view ( array $val = array() )
     {
         return view('lara::layouts.master',$val);
@@ -60,11 +65,24 @@ trait BaseController {
         $inner = view('lara::moduls.'.$this->name_controller.'.grid',  compact('url_controller'));
         return $this->view(compact(['inner']));
     }
+  */
+    
+    public function getIndex ()
+    {
+        $url_controller = $this->urlController();
+        return view('lara::moduls.'.$this->name_controller.'.layout',compact(['url_controller']));
+    }
+    
+    public function anyGrid ()
+    {
+        $url_controller = $this->urlController();
+        return view('lara::moduls.'.$this->name_controller.'.grid',  compact('url_controller'));
+    }
     
     public function postGetlist ()
     {
         $rows = $this->model()->all();
-        $url_controller = $this->url_controller;
+        $url_controller = $this->urlController();
         return view('lara::moduls.'.$this->name_controller.'.grid.getlist',  compact('rows','url_controller'));
     }
     
@@ -78,7 +96,7 @@ trait BaseController {
     
     public function getFormNew ()
     {
-        $url_controller = $this->url_controller;
+        $url_controller = $this->urlController();
         $id = 0;
         return view('lara::moduls.'.$this->name_controller.'.form.new', compact(['url_controller','id']));
     }

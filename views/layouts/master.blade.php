@@ -67,9 +67,10 @@
         <div id="right-panel" class="uk-offcanvas">
             <div class="uk-offcanvas-bar uk-offcanvas-bar-flip">
                 <div class="uk-panel">
-                                        <h3 class="uk-panel-title">Panel title</h3>
-                                        Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                    </div>
+                    @section('right_panel')
+                        [ПУСТО]
+                    @show
+                </div>
             </div>
         </div> 
         
@@ -84,11 +85,13 @@
             <div class="uk-grid">
 
                 <div class="uk-width-medium-1-1">
-                    {!!$inner!!}
+                    @section('content')
+                        
+                    @show
                 </div>
             </div>
 	</div>
-        
-        
+        @section('script')
+        @show
     </body>
 </html>

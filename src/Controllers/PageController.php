@@ -11,14 +11,14 @@ class PageController extends Controller {
 
     use BaseController;
     
-    protected $url_controller = '/lara/page';
-    
     protected $name_controller = 'page';
     
     public function model()
     {
         return new Page();
     }
+    
+    
     
     public function updateModel($model)
     {
@@ -66,6 +66,8 @@ class PageController extends Controller {
             )
         );
     }
+    
+    
     
     public function getEdit($var)
     {

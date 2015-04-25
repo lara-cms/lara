@@ -17,7 +17,7 @@
 
 
     <table class="uk-table uk-table-hover uk-table-striped uk-table-condensed"
-        data-x-url="{{$url_controller}}/getlist/{{$parent_id}}?_token={{csrf_token()}}">
+        data-x-url="{{$url_controller}}/getlist/{{$parent_id or 0}}?_token={{csrf_token()}}">
         <caption>название</caption>
         <thead>
             <tr>
