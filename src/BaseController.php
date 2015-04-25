@@ -78,12 +78,31 @@ trait BaseController {
         $url_controller = $this->urlController();
         return view('lara::moduls.'.$this->name_controller.'.grid',  compact('url_controller'));
     }
-    
+    /*
     public function postGetlist ()
     {
         $rows = $this->model()->all();
-        $url_controller = $this->urlController();
-        return view('lara::moduls.'.$this->name_controller.'.grid.getlist',  compact('rows','url_controller'));
+        $r = [];
+        foreach($rows as $val)
+        {   
+            $arr = $val->toArray();
+            $r[] = $arr;
+        }
+        return response()->json(['rows'=>$r]);
+    }
+    */
+    
+    
+    public function postGetlist ()
+    {
+        $model = $this->model();
+        $rows = $this->query($model);
+        $r = [];
+        foreach($rows as $val)
+        {   
+            $r[] = $this->toArray($val);
+        }
+        return response()->json(['rows'=>$r]);
     }
     
     public function getEdit ($var)

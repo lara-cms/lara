@@ -9,9 +9,12 @@
 
 
 @section('right_panel')
+    <h2>Фильтр</h2>
     
+    <form id="filter-form">
+        <input type="text" name="template" value='1'>
+    </form>
 
-    <p>Этот элемент будет добавлен к главному сайдбару.</p>
 @stop
 
 

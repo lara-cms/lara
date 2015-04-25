@@ -67,7 +67,21 @@ class PageController extends Controller {
         );
     }
     
+    public function query($model)
+    {
+        $m = $model->with('menu');
+        if (Input::has('template'))
+        {
+            $m->where('template',Input::get('template'));
+        }
+            
+        return $m->get();
+    }
     
+    public function toArray($model)
+    {
+        return $model->toArray();
+    }
     
     public function getEdit($var)
     {
