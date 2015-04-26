@@ -68,7 +68,7 @@
             <div class="uk-offcanvas-bar uk-offcanvas-bar-flip">
                 <div class="uk-panel">
                     @section('right_panel')
-                        [ПУСТО]
+                        {!!$right_panel or null!!}
                     @show
                 </div>
             </div>
@@ -86,13 +86,13 @@
 
                 <div class="uk-width-medium-1-1">
                     @section('content')
-                        
+                        {!!$content or null!!}
                     @show
                 </div>
             </div>
 	</div>
         @section('script')
-        
+            {!!$script or null!!}
         @show
     </body>
 </html>

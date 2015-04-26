@@ -22,6 +22,11 @@ trait BaseController {
         return '/'.Config('lara-cms.lara.master.prefix').'/'.$this->name_controller;
     }
     
+    public function idUpdate()
+    {
+        return Input::get('id');
+    }
+    
     protected function updateModel($model)
     {
         $model->name = Input::get( 'name' );
@@ -112,6 +117,7 @@ trait BaseController {
         $url_controller = $this->urlController();
         $id = $var;
         $model = $this->model()->find($var);
+        
         return view('lara::moduls.'.$this->name_controller.'.form', compact(['url_controller','id','model']));
     }
     
@@ -145,7 +151,7 @@ trait BaseController {
         
         if (Input::has('id'))
         {
-            $model = $this->model()->find(Input::get('id'));
+            $model = $this->model()->find($this->idUpdate());
         }   
         else
         {
@@ -187,10 +193,10 @@ trait BaseController {
         $r = [];
         foreach ($input as $val)
         {
-            if (!empty($val['value']))
-            {
+           // if (!isset($val['value']))
+         //   {
                 $r[$val['name']] = $val['value'];
-            }
+          //  }
         }
         return $r;
     }

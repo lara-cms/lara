@@ -1,6 +1,7 @@
 <?php namespace LaraCms\Lara\Controllers;
 
 use App\Page;
+use App\PageField;
 
 use View,Response,Input,Validator;
 Use laraCms\Lara\BaseController;
@@ -19,10 +20,18 @@ class PageController extends Controller {
         return new Page();
     }
     
-    
+    public function idUpdate()
+    {
+        return Input::get('id');
+    }
     
     public function updateModel($model)
     {
+        if (Input::has( 'page_field' ))
+        {
+            $model->setField(Input::get( 'page_field' ));
+        }
+
         if (Input::has( 'title' ))
         {
             $model->title = Input::get( 'title' );
@@ -60,7 +69,7 @@ class PageController extends Controller {
     {
         return Validator::make(
             array(
-                'title' => Input::get('title'),
+                'title' => Input::get( 'title' ),
             ),
             array(
                 'title' => 'required',
@@ -76,12 +85,12 @@ class PageController extends Controller {
         {
             $query = $this->makeQueryFromInput(Input::get('query'));
 
-            if (isset($query['get_parent']))
+            if (isset($query['get_parent']) and !empty($query['get_parent']) )
             {
                 $m->getParentFromMenu($query['get_parent']);
             }
 
-            if (isset($query['template']))
+            if (isset($query['template']) and !empty($query['template']) )
             {
                 $m->where('template',$query['template']);
             }
@@ -94,12 +103,24 @@ class PageController extends Controller {
     {
         return $model->toArray();
     }
-    
+   
     public function getEdit($var)
     {
-        $url_controller = $this->url_controller;
+        $url_controller = $this->urlController();
         $model = $this->model()->find($var);
-        $inner = view('lara::moduls.'.$this->name_controller.'.form',  compact('url_controller','model'));
-        return $this->view(compact(['inner']));
+
+        $tpl = 'lara::moduls.'.$this->name_controller.'.template_form.'.$model->templateName();
+        if (view()->exists($tpl))
+        {
+            $content = view($tpl,  compact('url_controller','model'));
+        }
+        else
+        {
+            $content = view('lara::layouts.page.form',  compact('url_controller','model'));
+        }
+        
+        
+
+        return view( 'lara::layouts.master',  compact( 'content',$content ) );
     }
 }
