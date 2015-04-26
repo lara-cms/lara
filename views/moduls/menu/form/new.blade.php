@@ -11,7 +11,7 @@
         </div>
         
         <div class="uk-form-row">
-            <input type="text" placeholder="ID страници" name="page_id" >
+            <input type="text" placeholder="ID страници" name="page_id">
         </div>
         
         <div class="uk-form-row">
@@ -28,6 +28,9 @@
 </form>
 
 <script>
+    
+  
+    
     yepnope.injectJs('/bower_components/juk/juk-form.js',function(){
         yepnope.injectJs('/bower_components/juk/juk-loader.js',function(){
             $('form').jukForm({

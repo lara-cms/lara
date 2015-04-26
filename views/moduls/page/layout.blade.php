@@ -12,7 +12,8 @@
     <h2>Фильтр</h2>
     
     <form id="filter-form">
-        <input type="text" name="template" value='1'>
+        <input type="text" name="template">
+        <input type="text" name="get_parent" value="{{Input::get('get_parent','')}}">
     </form>
 
 @stop

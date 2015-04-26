@@ -39,7 +39,7 @@
                 <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav>
                     <li class="uk-parent">
                         <a href="#"><i class="uk-icon-unlock-alt"></i> Безапастность</a>
-                        <ul class="uk-nav-sub">
+                        <ul style="margin-left:15px" class="uk-nav-sub">
                             <li><a href="/lara/user"><i class="uk-icon-user"></i> Пользователи</a></li>
                             <li><a href=""><i class="uk-icon-users"></i> Роли</a></li>
                             <li><a href=""><i class="uk-icon-key"></i> Доступы</a></li>
@@ -92,6 +92,7 @@
             </div>
 	</div>
         @section('script')
+        
         @show
     </body>
 </html>

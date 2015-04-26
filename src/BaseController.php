@@ -9,10 +9,8 @@ use Symfony\Component\HttpFoundation\Exception\HttpException;
 
 trait BaseController {
     
-    //protected $url_controller = '/lara/user';
-    
     //protected $name_controller = 'user';
-
+    //protected $paginate = false;
 
     protected function model()
     {
@@ -53,19 +51,6 @@ trait BaseController {
             )
         );
     }
-/*
-    protected function view ( array $val = array() )
-    {
-        return view('lara::layouts.master',$val);
-    }
-    
-    public function getIndex ()
-    {
-        $url_controller = $this->url_controller;
-        $inner = view('lara::moduls.'.$this->name_controller.'.grid',  compact('url_controller'));
-        return $this->view(compact(['inner']));
-    }
-  */
     
     public function getIndex ()
     {
@@ -78,20 +63,16 @@ trait BaseController {
         $url_controller = $this->urlController();
         return view('lara::moduls.'.$this->name_controller.'.grid',  compact('url_controller'));
     }
-    /*
-    public function postGetlist ()
-    {
-        $rows = $this->model()->all();
-        $r = [];
-        foreach($rows as $val)
-        {   
-            $arr = $val->toArray();
-            $r[] = $arr;
-        }
-        return response()->json(['rows'=>$r]);
-    }
-    */
     
+    public function query($model)
+    {
+        return $model->get();
+    }
+    
+    public function toArray($model)
+    {
+        return $model->toArray();
+    }
     
     public function postGetlist ()
     {
@@ -102,12 +83,33 @@ trait BaseController {
         {   
             $r[] = $this->toArray($val);
         }
-        return response()->json(['rows'=>$r]);
+        
+        if ($rows and $this->paginate) {
+            $paginate = [];
+            
+            $pages = ceil( $rows->total() / 10 );
+
+            for ($i=1; $i<=$pages;$i++)
+            {
+                $paginate[] = array(
+                    'number' => $i,
+                    'url' => $i,
+                    'active' => ($i == $rows->currentPage()) ? true : false,
+                );
+
+            }
+        }
+        else
+        {
+            $paginate = false;
+        }
+        
+        return response()->json(['rows'=>$r,'paginate'=>$paginate]);
     }
     
     public function getEdit ($var)
     {
-        $url_controller = $this->url_controller;
+        $url_controller = $this->urlController();
         $id = $var;
         $model = $this->model()->find($var);
         return view('lara::moduls.'.$this->name_controller.'.form', compact(['url_controller','id','model']));
@@ -179,4 +181,17 @@ trait BaseController {
         $model->delete();
         return response()->json([]);
     }   
+    
+    public function makeQueryFromInput($input) 
+    {
+        $r = [];
+        foreach ($input as $val)
+        {
+            if (!empty($val['value']))
+            {
+                $r[$val['name']] = $val['value'];
+            }
+        }
+        return $r;
+    }
 }

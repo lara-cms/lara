@@ -1,4 +1,4 @@
-<form class="uk-form" action="{{$url_controller}}/getdata/{{$id}}?_token={{csrf_token()}}" method="POST" data-x-form>
+<form id="model-form" class="uk-form" action="{{$url_controller}}/getdata/{{$id}}?_token={{csrf_token()}}" method="POST" data-x-form>
     <fieldset>
         <legend>Страница</legend>
         
@@ -38,9 +38,15 @@
 </form>
 
 <script>
+    
+    
+    var get_parent = $('#filter-form [name=get_parent]').val();
+    $('#model-form [name=menu_id]').val(get_parent);
+
+
     yepnope.injectJs('/bower_components/juk/juk-form.js',function(){
         yepnope.injectJs('/bower_components/juk/juk-loader.js',function(){
-            $('form').jukForm({
+            $('#model-form').jukForm({
                 start_load: false,
                 submit_url: '{{$url_controller}}/update?_token={{csrf_token()}}',
                 event_update_success: function() {

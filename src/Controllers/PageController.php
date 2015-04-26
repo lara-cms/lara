@@ -12,6 +12,7 @@ class PageController extends Controller {
     use BaseController;
     
     protected $name_controller = 'page';
+    protected $paginate = false;
     
     public function model()
     {
@@ -70,14 +71,25 @@ class PageController extends Controller {
     public function query($model)
     {
         $m = $model->with('menu');
-        if (Input::has('template'))
+        
+        if (Input::has('query'))
         {
-            $m->where('template',Input::get('template'));
-        }
-            
+            $query = $this->makeQueryFromInput(Input::get('query'));
+
+            if (isset($query['get_parent']))
+            {
+                $m->getParentFromMenu($query['get_parent']);
+            }
+
+            if (isset($query['template']))
+            {
+                $m->where('template',$query['template']);
+            }
+        }    
         return $m->get();
+        //return $m->paginate(10);
     }
-    
+     
     public function toArray($model)
     {
         return $model->toArray();

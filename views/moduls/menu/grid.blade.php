@@ -45,6 +45,8 @@
                 <td>[[active]]</td>
                 <td  style="text-align: right;">
                     [[link_page_id]]
+                    
+                    <a href="/lara/page/?get_parent=[[id]]" class="uk-button uk-button-large"><i class="uk-icon-bars"></i></a>
                     <button class="uk-button uk-button-large" data-table-parent="[[id]]"><i class="uk-icon-arrow-circle-o-down"></i></button>
                     <button class="uk-button uk-button-large uk-button-primary" data-x-model="{{$url_controller}}/edit/[[id]]"><i class="uk-icon-edit"></i></button>
                     <button class="uk-button uk-button-large uk-button-danger" onclick="
