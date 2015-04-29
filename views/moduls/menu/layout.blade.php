@@ -18,7 +18,7 @@
 @section('script')
 <script>
     $.ajax({
-        url: '{{$url_controller}}/grid',
+        url: '{{$url_controller}}/{{$get_inner or 'grid'}}',
         success: function(data){
             $('#content-inner').html(data);
         }

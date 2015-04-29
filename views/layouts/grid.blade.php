@@ -166,7 +166,8 @@ jQuery.fn.jukTable = function (conf)
             <button class="uk-button uk-button-primary" onclick="
                      jQuery.ajax({
                         type: 'POST',
-                        url: '{{$url_controller}}/remove/'+$('#x-row-remove-conform .x-id').html()+'?_token={{csrf_token()}}',
+                        url: '{{$url_controller}}/remove?_token={{csrf_token()}}',
+                        data: {name:$('#x-row-remove-conform .x-id').html()},
                         dataType: 'json',
                         success : function(){
                             UIkit.modal('#x-row-remove-conform').hide();

@@ -37,6 +37,7 @@
             <div class="uk-offcanvas-bar">
 
                 <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav>
+                    
                     <li class="uk-parent">
                         <a href="#"><i class="uk-icon-unlock-alt"></i> Безапастность</a>
                         <ul style="margin-left:15px" class="uk-nav-sub">
@@ -52,6 +53,18 @@
                     
                     <li>
                         <a href="/lara/menu"><i class="uk-icon-tree"></i> Дерево (меню)</a>
+                    </li>
+                    
+                    <li class="uk-parent">
+                        <a href="#"><i class="uk-icon-folder"></i> Файлы</a>
+                        <ul style="margin-left:15px" class="uk-nav-sub">
+                            <li><a href="/lara/files"><i class="uk-icon-download"></i> Загрузка файлов</a></li>
+                            <li><a href="/lara/files/manager"><i class="uk-icon-folder-o"></i> Упровление файлами</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        
                     </li>
                     
                     <li>

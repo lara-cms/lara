@@ -175,9 +175,9 @@ trait BaseController {
     
     public function postRemove ($var = 0)
     {
-        if (Input::has('id'))
+        if (Input::has('name'))
         {
-            $model = $this->model()->find(Input::get('id'));
+            $model = $this->model()->find(Input::get('name'));
         }   
         else
         {

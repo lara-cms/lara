@@ -1,6 +1,5 @@
 @extends('lara::layouts.master')
 
-
 @section('content')
     <div id="content-inner">
     
@@ -9,13 +8,6 @@
 
 
 @section('right_panel')
-    <h2>Фильтр</h2>
-    
-    <form id="filter-form">
-        <input type="text" name="template">
-        <input type="text" name="get_parent" value="{{Input::get('get_parent','')}}">
-    </form>
-
 @stop
 
 
