@@ -20,7 +20,16 @@
                     <lable>Картинка:</lable>
                 </td>
                 <td>
-                    <input type="text" placeholder="URL" name="image" value="{{$model->getField('image')}}">
+                    <input type="text" placeholder="Image" name="image" value="{{$model->getField('image')}}">
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <lable>Описание:</lable>
+                </td>
+                <td>
+                    <textarea placeholder="Описание" name="desc" >{{$model->getField('desc')}}</textarea>
                 </td>
             </tr>
             

@@ -1,12 +1,13 @@
 {
-  "name": "lara-cms",
+  "name": "lumencms",
   "version": "0.0.0",
   "authors": [
     "Suroviy <Syroviy@bk.ru>"
   ],
-  "description": "assets lib for lara-cms",
+  "description": "assets lib for LumenCMS",
   "keywords": [
-    "laravel"
+    "laravel",
+    "lumen"
   ],
   "license": "MIT",
   "homepage": "QwerBit.ru",
@@ -18,11 +19,11 @@
     "tests"
   ],
   "dependencies": {
-    "elFinder": "git://github.com/Studio-42/elFinder#~1.0.1",
+    "Mini-AJAX-File-Upload-Form": "git://github.com/furic/Mini-AJAX-File-Upload-Form",
     "ace-builds": "git://github.com/ajaxorg/ace-builds#~1.1.9",
     "jquery": "~2.1.3",
-    "uikit": "~2.19.0",
     "juk": "git://github.com/suroviy/juk",
-    "yepnope": "~2.0.0"
+    "yepnope": "~2.0.0",
+    "uikit": "~2.19.0"
   }
 }
