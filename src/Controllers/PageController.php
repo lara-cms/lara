@@ -52,10 +52,10 @@ class PageController extends Controller {
             $model->menu_id = Input::get( 'menu_id' );
         } 
         
-        if (Input::has( 'active' ))
-        {
-            $model->active = Input::get( 'active' );
-        }    
+        //if (Input::has( 'active' ))
+        //{
+            $model->active = Input::get( 'active',false);
+        //}    
         
         if (Input::has( 'content' ))
         {
